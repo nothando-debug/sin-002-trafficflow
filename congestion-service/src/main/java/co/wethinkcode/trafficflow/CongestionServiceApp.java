@@ -5,7 +5,7 @@ import javax.jms.Connection;
 import javax.jms.DeliveryMode;
 import javax.jms.MessageProducer;
 import javax.jms.TextMessage;
-import javax.jms.Topic;
+import javax.jms.*;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -66,7 +66,9 @@ public class CongestionServiceApp {
             System.err.println("Failed to publish message to ActiveMQ: " + e.getMessage());
         }
 
-        public record CongestionRequest(int level) {}
+    }
+
+    public record CongestionRequest(int level) {}
     public record CongestionResponse(int level) {}
 
 
