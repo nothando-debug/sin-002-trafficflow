@@ -1,7 +1,7 @@
 package co.wethinkcode.trafficflow;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
+import javax.jms.Connection;
 import javax.jms.DeliveryMode;
 import javax.jms.MessageProducer;
 import javax.jms.TextMessage;
@@ -11,7 +11,6 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import io.javalin.Javalin;
 import io.javalin.http.BadRequestResponse;
-
 public class CongestionServiceApp {
 
     private static final AtomicInteger congestionLevel = new AtomicInteger(0);
@@ -60,7 +59,6 @@ public class CongestionServiceApp {
 
             producer.send(message);
 
-            // Clean up resources
             producer.close();
             session.close();
             connection.close();
@@ -68,6 +66,8 @@ public class CongestionServiceApp {
             System.err.println("Failed to publish message to ActiveMQ: " + e.getMessage());
         }
 
+        public record CongestionRequest(int level) {}
+    public record CongestionResponse(int level) {}
 
 
     
