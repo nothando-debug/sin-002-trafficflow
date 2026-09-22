@@ -1,10 +1,7 @@
 package co.wethinkcode.trafficflow;
+import co.wethinkcode.trafficflow.mq.MqConfig;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.jms.Connection;
-import javax.jms.DeliveryMode;
-import javax.jms.MessageProducer;
-import javax.jms.TextMessage;
 import javax.jms.*;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
